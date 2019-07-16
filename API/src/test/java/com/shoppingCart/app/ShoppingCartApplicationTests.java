@@ -36,6 +36,7 @@ public class ShoppingCartApplicationTests {
 		customer.setLastName("Kain");
 		customer.setUsername("mkain");
 		customer.setPassword("12345");
+		customer.setRoles("admin");
 	}
 	
 	@Test

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.shoppingCart.app.model.Customer;
 
+import java.util.List;
+
 @Repository
 public class CustomerDaoImp implements CustomerDao {
 
@@ -24,6 +26,14 @@ public class CustomerDaoImp implements CustomerDao {
 	@Override
 	public Long save(Customer customer) {
 		return (Long) sessionFactory.getCurrentSession().save(customer);		
+	}
+
+	@Override
+	public List<Customer> getAll() {
+		String queryString = "FROM Customer";
+		return  sessionFactory.getCurrentSession()
+				.createQuery(queryString)
+				.list();
 	}
 
 }

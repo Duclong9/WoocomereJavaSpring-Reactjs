@@ -1,7 +1,9 @@
 package com.shoppingCart.app.service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
+import com.shoppingCart.app.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,7 @@ import com.shoppingCart.app.util.ShaHashing;
 
 @Service
 @Transactional
-public class CustomerServiceImp implements CustomerService {
+public class CustomerServiceImp  implements CustomerService {
 
 	@Autowired
 	CustomerDao customerDao;
@@ -32,6 +34,11 @@ public class CustomerServiceImp implements CustomerService {
 	public Long addCustomer(Customer customer) throws NoSuchAlgorithmException {
 		customer.setPassword(ShaHashing.encrypted(customer.getPassword()));
 		return customerDao.save(customer);
+	}
+
+	@Override
+	public List<Customer> getAll() {
+		return customerDao.getAll();
 	}
 
 }
