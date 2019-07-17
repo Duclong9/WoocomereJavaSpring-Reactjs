@@ -11,6 +11,8 @@ public interface CustomerService {
 
     Customer authentication(String username, String password)
             throws NoSuchAlgorithmException, AuthenticationFailedException;
+
     Long addCustomer(Customer customer) throws NoSuchAlgorithmException;
+
     List<Customer> getAll();
 }
